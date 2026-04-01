@@ -1,0 +1,26 @@
+import { useTranslation } from 'react-i18next';
+import { Languages } from 'lucide-react';
+import styles from './LangSwitcher.module.scss';
+
+export const LangSwitcher = ({ className = '' }: { className?: string }) => {
+  const { i18n } = useTranslation('common');
+
+  const toggleLang = () => {
+    const newLang = i18n.language === 'uk' ? 'en' : 'uk';
+
+    i18n.changeLanguage(newLang);
+  };
+
+  const displayLang = i18n.language === 'uk' ? 'ua' : i18n.language;
+
+  return (
+    <button
+      onClick={toggleLang}
+      className={`${styles.controlBtn} ${className}`}
+      title="Change Language"
+    >
+      <Languages size={16} strokeWidth={1.5} />
+      <span className={styles.lang}>{(displayLang || 'en').toUpperCase()}</span>
+    </button>
+  );
+};

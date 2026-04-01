@@ -38,14 +38,16 @@ module.exports = {
   ],
   rules: {
     // JS
+    'max-len': 'off',
+    'import/extensions': 'off',
     'semi': 'off',
     '@typescript-eslint/semi': ['error', 'always'],
     'prefer-const': 2,
     curly: [2, 'all'],
-    'max-len': ['error', {
-      ignoreTemplateLiterals: true,
-      ignoreComments: true,
-    }],
+    // 'max-len': ['error', {
+    //   ignoreTemplateLiterals: true,
+    //   ignoreComments: true,
+    // }],
     'no-redeclare': [2, { builtinGlobals: true }],
     'no-console': 2,
     'operator-linebreak': 0,

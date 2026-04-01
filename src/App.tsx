@@ -1,21 +1,16 @@
-import React from 'react';
-import './App.scss';
+import { Suspense } from 'react';
+import { useThemeStore } from './store/themeStore';
+import { AppRoutes } from './router/AppRoutes';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
+export const App = () => {
+  const { theme } = useThemeStore();
 
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
-
-export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
+    <div className={`app theme-${theme}`}>
+      <h1 hidden>Product Catalog</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <AppRoutes />
+      </Suspense>
     </div>
   );
 };
